@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.RegistrarsePage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             x:DataType="vm:RegistrarseViewModel"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#001111"
+             Title="">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="18" VerticalOptions="CenterAndExpand">
+
+            <Label Text="Crear Cuenta"
+                   FontSize="24"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Email -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Email" Text="{Binding Email}" Keyboard="Email" />
+            </Frame>
+
+            <!-- Username -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Nombre de Usuario" Text="{Binding Username}" />
+            </Frame>
+
+            <!-- Contraseña -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Contraseña" Text="{Binding Password}" IsPassword="True" />
+            </Frame>
+
+            <!-- Confirmar contraseña -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Confirmar Contraseña" Text="{Binding ConfirmarPassword}" IsPassword="True" />
+            </Frame>
+
+            <!-- Nombre -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Nombre" Text="{Binding Nombre}" />
+            </Frame>
+
+            <!-- Apellido -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Apellido" Text="{Binding Apellido}" />
+            </Frame>
+
+            <!-- Celular -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Nro Celular" Text="{Binding Nrocelular}" Keyboard="Telephone" />
+            </Frame>
+
+            <!-- País -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="País" Text="{Binding Pais}" />
+            </Frame>
+
+            <!-- Provincia -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Provincia" Text="{Binding Provincia}" />
+            </Frame>
+
+            <!-- Localidad -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Localidad" Text="{Binding Localidad}" />
+            </Frame>
+
+            <!-- Código Postal -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Código Postal (opcional)" Text="{Binding Codigopostal}" Keyboard="Numeric" />
+            </Frame>
+
+            <!-- Calle -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Calle (opcional)" Text="{Binding Calle}" />
+            </Frame>
+
+            <!-- Número de Calle -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Número de Calle (opcional)" Text="{Binding Nrocalle}" Keyboard="Numeric" />
+            </Frame>
+
+            <!-- Botón Registrarse -->
+            <Button Text="Registrarse"
+                    Command="{Binding RegistrarCommand}"
+                    TextColor="White"
+                    BackgroundColor="#9C6EFF"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Margin="0,20,0,0" />
+
+            <!-- Volver -->
+            <Button Text="Volver a Login"
+                    Command="{Binding VolverCommand}"
+                    TextColor="White"
+                    BackgroundColor="Gray"
+                    CornerRadius="25"
+                    HeightRequest="45"
+                    FontSize="16"
+                    Margin="0,10,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.CrearProductoPage"
+              xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             x:DataType="vm:CrearProductoViewModel"
+             NavigationPage.HasNavigationBar="False"
+             Title="CrearProductoPage">
+    <ScrollView >
+    <VerticalStackLayout Padding="20" VerticalOptions="Center">
+        <Entry
+            Placeholder="Nombre Producto"
+            Text="{Binding Producto.NombreProducto}" 
+            PlaceholderColor="#D3D3D3"
+            TextColor="#E6E6E6"
+            HeightRequest="50"
+            Margin="0,10,0,0"/>
+
+        <Entry
+            Placeholder="Descripcion"
+            Text="{Binding Producto.Descripcion}" 
+            PlaceholderColor="#D3D3D3"
+            TextColor="#E6E6E6"
+            HeightRequest="50"
+            Margin="0,10,0,0"/>
+
+        <Entry
+            Placeholder="Precio"  Keyboard="Numeric"
+            Text="{Binding Producto.Precio, StringFormat='{}{0:F2}'}" 
+            PlaceholderColor="#D3D3D3"
+            TextColor="#E6E6E6"
+            HeightRequest="50"
+            Margin="0,10,0,0"/>
+            <Entry
+            Placeholder="Cantidad"  Keyboard="Numeric"
+            Text="{Binding Producto.Cantidad, StringFormat='{}{0:F2}'}" 
+            PlaceholderColor="#D3D3D3"
+            TextColor="#E6E6E6"
+            HeightRequest="50"
+            Margin="0,10,0,0"/>
+
+            <Label Text="Categoría" TextColor="White"/>
+
+       
+        <Picker
+            Title="Seleccionar categoría"
+            ItemsSource="{Binding Categorias}"
+            ItemDisplayBinding="{Binding Nombre}"
+            SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}"
+            TextColor="White"
+            BackgroundColor="#1E1E1E"
+            HeightRequest="50"/>
+
+
+
+        <!-- Estado Producto -->
+        <Label Text="Estado del Producto" TextColor="White"/>
+        <Picker Title="Seleccione Estado del Producto"
+                ItemsSource="{Binding EstadoProductoOpciones}"
+                SelectedItem="{Binding EstadoProductoSeleccionado}"
+                TextColor="White"
+                BackgroundColor="#1E1E1E"
+                HeightRequest="50" />
+
+        <!-- Estado Venta -->
+        <Label Text="Estado de la Venta" TextColor="White"/>
+        
+        <Picker Title="Seleccione Estado de la Venta"
+                ItemsSource="{Binding EstadoVentaOpciones}"
+                SelectedItem="{Binding EstadoVentaSeleccionado}"
+                TextColor="White"
+                BackgroundColor="#1E1E1E"
+                HeightRequest="50" />
+        
+        
+        
+        <Button Text="Seleccionar imagen" Margin="0,20,0,10"
+                        Command="{Binding SeleccionarYSubirImagenCommand}" />
+        <Image Source="{Binding ImagenUrl}" HeightRequest="150" />
+
+
+        <Button Text="Crear" 
+                Command="{Binding CrearCommand}" 
+                TextColor="#D3D3D3"
+                BackgroundColor="Green"
+                FontSize="20"
+                HeightRequest="48"
+                VerticalOptions="EndAndExpand"
+                Margin="0,30,0,0"/>
+
+        <Button Text="Cancelar" 
+                Command="{Binding GoBackCommand}" 
+                TextColor="White"
+                BackgroundColor="Gray"
+                FontSize="18"
+                HeightRequest="40"
+                VerticalOptions="EndAndExpand"
+                Margin="0,20,0,0"/>
+    </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

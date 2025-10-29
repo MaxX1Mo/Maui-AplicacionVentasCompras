@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             x:Class="App_VentasCompras_Maui.Views.EditarProductoPage"
+             x:DataType="vm:EditarProductoViewModel"
+             BackgroundColor="#001111"
+             NavigationPage.HasNavigationBar="False"
+             Title="Editar Producto">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <!-- Encabezado -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Image Source="logo_app.png" WidthRequest="40" HeightRequest="40" />
+                <Label Text="Editar Producto"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- Formulario con Grid con filas declaradas -->
+            <Grid ColumnDefinitions="Auto,*"
+                  RowDefinitions="Auto,Auto,Auto,Auto,Auto,Auto,Auto,Auto"
+                  RowSpacing="10" ColumnSpacing="10">
+
+                <!-- Nombre -->
+                <Label Grid.Row="0" Grid.Column="0" Text="Nombre:" TextColor="White" VerticalOptions="Center"/>
+                <Entry Grid.Row="0" Grid.Column="1" Text="{Binding Producto.NombreProducto}" Placeholder="{Binding Producto.NombreProducto}" />
+
+                <!-- Descripción -->
+                <Label Grid.Row="1" Grid.Column="0" Text="Descripción:" TextColor="White" VerticalOptions="Start"/>
+                <Editor Grid.Row="1" Grid.Column="1" Text="{Binding Producto.Descripcion}" HeightRequest="100"
+                        BackgroundColor="#1E1E1E" TextColor="White"/>
+
+                <!-- Precio -->
+                <Label Grid.Row="2" Grid.Column="0" Text="Precio:" TextColor="White" VerticalOptions="Center"/>
+                <Entry Grid.Row="2" Grid.Column="1" Text="{Binding Producto.Precio}" Keyboard="Numeric"/>
+
+                <!-- Stock -->
+                <Label Grid.Row="3" Grid.Column="0" Text="Stock:" TextColor="White" VerticalOptions="Center"/>
+                <Entry Grid.Row="3" Grid.Column="1" Text="{Binding Producto.Cantidad}" Keyboard="Numeric"/>
+
+
+                <!-- Estado Producto -->
+                <Label Grid.Row="4" Grid.Column="0" Text="Estado Producto:" TextColor="White" VerticalOptions="Center"/>
+                <Picker Grid.Row="4" Grid.Column="1"
+                        Title="{Binding Producto.EstadoProducto}"
+                        ItemsSource="{Binding EstadoProductoOpciones}"
+                        SelectedItem="{Binding EstadoProductoSeleccionado}"
+                        TextColor="White"
+                        BackgroundColor="#1E1E1E"/>
+
+                <!-- Estado Venta -->
+                <Label Grid.Row="5" Grid.Column="0" Text="Estado Venta:" TextColor="White" VerticalOptions="Center"/>
+                <Picker Grid.Row="5" Grid.Column="1"
+                        Title="{Binding Producto.EstadoVenta}"
+                        ItemsSource="{Binding EstadoVentaOpciones}"
+                        SelectedItem="{Binding EstadoVentaSeleccionado}"
+                        TextColor="White"
+                        BackgroundColor="#1E1E1E"/>
+
+                <!-- Categoría -->
+                <Label Grid.Row="6" Grid.Column="0" Text="Categoría:" TextColor="White" VerticalOptions="Center"/>
+                <Picker Grid.Row="6" Grid.Column="1"
+                        Title="{Binding Producto.NombreCategoria}"
+                        ItemsSource="{Binding Categorias}"
+                        ItemDisplayBinding="{Binding Nombre}"
+                        SelectedItem="{Binding CategoriaSeleccionada}"
+                        TextColor="White"
+                        BackgroundColor="#1E1E1E"/>
+            </Grid>
+
+            <!-- Imagen -->
+            <Button Text="Seleccionar Imagen"
+                    Command="{Binding SeleccionarYSubirImagenCommand}"
+                    BackgroundColor="#FFA500"
+                    TextColor="Black"/>
+            <Image Source="{Binding ImagenUrl}" HeightRequest="200" />
+
+            <!-- Botones -->
+            <Button Text="Guardar Cambios"
+                    Command="{Binding GuardarProductoCommand}"
+                    BackgroundColor="Green"
+                    TextColor="White"
+                    HeightRequest="48"
+                    Margin="0,20,0,0"/>
+
+            <Button Text="Cancelar"
+                    Command="{Binding GoBackCommand}"
+                    BackgroundColor="Red"
+                    TextColor="White"
+                    HeightRequest="48"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

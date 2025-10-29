@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.LoginPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             x:DataType="vm:LoginViewModel"
+             BackgroundColor="#001111"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="20" VerticalOptions="CenterAndExpand">
+
+            <!-- Logo -->
+            <Image Source="logo_app.png"
+                   HeightRequest="180"
+                   WidthRequest="180"
+                   HorizontalOptions="Center" />
+
+            <!-- Título -->
+            <Label Text="Iniciar Sesión"
+                   FontSize="24"
+                   TextColor="White"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Email -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Correo electrónico"
+                       Text="{Binding Email}"
+                       PlaceholderColor="#AAAAAA"
+                       TextColor="White"
+                       BackgroundColor="Transparent"
+                       HeightRequest="50"
+                       Keyboard="Email" />
+            </Frame>
+
+            <!-- Contraseña -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Contraseña"
+                   Text="{Binding Password}"
+                   IsPassword="True"
+                   PlaceholderColor="#AAAAAA"
+                   TextColor="White"
+                   BackgroundColor="#1E1E1E"
+                   HeightRequest="50"
+                   Margin="0,10,0,0"
+                   />
+            </Frame>
+
+            <!-- Botón Login -->
+            <Button Text="Entrar"
+                    Command="{Binding AccesoCommand}"
+                    TextColor="White"
+                    BackgroundColor="#9C6EFF"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    HeightRequest="50"
+                    CornerRadius="25"
+                    Margin="0,20,0,0" />
+
+            <!-- Error -->
+            <Label Text="{Binding ErrorMessage}"
+                   TextColor="Red"
+                   FontSize="14"
+                   IsVisible="{Binding IsErrorVisible}"
+                   HorizontalOptions="Center" />
+
+            <!-- Línea divisoria -->
+            <Label Text="────────────  o  ────────────"
+                   TextColor="Gray"
+                   FontSize="14"
+                   HorizontalOptions="Center" />
+
+            <!-- Registro -->
+            <Label Text="¿No tienes cuenta? Registrate"
+                   TextColor="#9C6EFF"
+                   HorizontalOptions="Center"
+                   FontAttributes="Bold">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding RegistrarCommand}" />
+                </Label.GestureRecognizers>
+            </Label>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

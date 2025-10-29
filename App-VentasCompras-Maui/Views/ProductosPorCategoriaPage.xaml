@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.ProductosPorCategoriaPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             xmlns:model="clr-namespace:App_VentasCompras_Maui.Models"
+             x:DataType="vm:ProductosPorCategoriaViewModel"
+             BackgroundColor="#001111"
+             Title="">
+
+    <Grid RowSpacing="15" Padding="20"
+          RowDefinitions="Auto,Auto,Auto,*">
+
+        <!-- Fila 0: Encabezado -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" HorizontalOptions="Center" Grid.ColumnSpan="2">
+            <Image Source="logo_app.png" WidthRequest="40" HeightRequest="40" VerticalOptions="Center"/>
+            <Label Text="Buscar por Categoría"
+                   FontSize="24"
+                   
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <!-- Fila 1: Categorias -->
+        <Picker Grid.Row="1" Grid.Column="1"
+            Title="Seleccionar categoría"
+            ItemsSource="{Binding Categorias}"
+            ItemDisplayBinding="{Binding Nombre}"
+            SelectedItem="{Binding CategoriaSeleccionada, Mode=TwoWay}"
+            TextColor="White"
+            BackgroundColor="#1E1E1E"
+            HeightRequest="50"/>
+
+        <!-- Fila 2: Lista de productos -->
+        <RefreshView Grid.Row="3"
+                     Grid.ColumnSpan="2"
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding GetProductosCommand}">
+            <CollectionView ItemsSource="{Binding Productos}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding ProductoSeleccionado}"                           
+                            SelectionChangedCommand="{Binding GoToDetailCommand}">
+
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="50">
+                        <Image Source="loading.png"
+                               WidthRequest="100"
+                               HeightRequest="100"
+                               HorizontalOptions="Center"/>
+                        <Label Text="No se encontraron productos"
+                               TextColor="Gray"
+                               FontSize="16"
+                               HorizontalOptions="Center"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Producto">
+                        <Frame Padding="10" Margin="5" BorderColor="Silver" CornerRadius="15" HasShadow="True" InputTransparent="True">
+                            <Grid ColumnDefinitions="0.3*,0.7*" ColumnSpacing="15" InputTransparent="True">
+                                <Image Grid.Column="0"
+                                       Source="{Binding Imagen}"
+                                       WidthRequest="80"
+                                       HeightRequest="80"
+                                       Aspect="AspectFit"/>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding NombreProducto}"
+                                           FontSize="Medium"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding EstadoProducto}"
+                                           FontSize="Small"
+                                           TextColor="LightGray"/>
+                                    <Label Text="{Binding Precio, StringFormat='{0:C}'}"
+                                           FontSize="Small"
+                                           TextColor="LightGreen"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

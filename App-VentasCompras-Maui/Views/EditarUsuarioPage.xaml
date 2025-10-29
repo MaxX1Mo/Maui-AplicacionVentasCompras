@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.EditarUsuarioPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             x:DataType="vm:EditarUsuarioViewModel"
+             BackgroundColor="#001111"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            <HorizontalStackLayout Spacing="15" HorizontalOptions="Center">
+                <Image Source="logo_app.png"
+                       WidthRequest="50"
+                       HeightRequest="50"
+                       VerticalOptions="Center" />
+                <Label Text="Editar Perfil"
+                       TextColor="White"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+
+            <!-- DATOS PERSONALES -->
+            <Label Text="Datos Personales" TextColor="Gray" FontSize="18" />
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Nombre}" Placeholder="Nombre" />
+            </Frame>
+
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Apellido}" Placeholder="Apellido" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Email}" Placeholder="Email" Keyboard="Email" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding NuevaPassword}" Placeholder="Contraseña" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Username}" Placeholder="Usuario" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.NroCelular}" Placeholder="Teléfono" Keyboard="Telephone" />
+            </Frame>
+
+            <!-- UBICACIÓN -->
+            <Label Text="Dirección" TextColor="Gray" FontSize="18" />
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Pais}" Placeholder="País" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Provincia}" Placeholder="Provincia" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Localidad}" Placeholder="Localidad" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.CodigoPostal}" Placeholder="Código Postal" Keyboard="Numeric" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Calle}" Placeholder="Calle" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.NroCalle}" Placeholder="Número de Calle" Keyboard="Numeric" />
+            </Frame>
+
+            <!-- BOTONES -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,30,0,0">
+                <Button Text="Guardar"
+                        Command="{Binding GuardarCambiosCommand}"
+                        BackgroundColor="#9C6EFF"
+                        TextColor="White"
+                        FontAttributes="Bold"
+                        WidthRequest="130" />
+                <Button Text="Cancelar"
+                        Command="{Binding CancelarCommand}"
+                        BackgroundColor="Gray"
+                        TextColor="White"
+                        WidthRequest="130" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+

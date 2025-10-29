@@ -1,0 +1,37 @@
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:App_VentasCompras_Maui"
+             xmlns:converters="clr-namespace:App_VentasCompras_Maui.Utils"
+             x:Class="App_VentasCompras_Maui.App">
+    <Application.Resources>
+
+        <Style x:Key="MenuButton" TargetType="Button">
+            <Setter Property="BackgroundColor" Value="#9C6EFF" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="FontAttributes" Value="Bold" />
+            <Setter Property="CornerRadius" Value="20" />
+            <Setter Property="HeightRequest" Value="80" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="ContentLayout" Value="Top, 10" />
+        </Style>
+
+        <Style x:Key="ExitButton" TargetType="Button" BasedOn="{StaticResource MenuButton}">
+            <Setter Property="TextColor" Value="Red" />
+            <Setter Property="BackgroundColor" Value="White" />
+        </Style>
+        <Style TargetType="Entry">
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="PlaceholderColor" Value="#AAAAAA" />
+            <Setter Property="BackgroundColor" Value="#1E1E1E" />
+            <Setter Property="HeightRequest" Value="50" />
+        </Style>
+        <Style x:Key="EntryFrame" TargetType="Frame">
+            <Setter Property="Padding" Value="0"/>
+            <Setter Property="CornerRadius" Value="10"/>
+            <Setter Property="BackgroundColor" Value="#1E1E1E"/>
+            <Setter Property="HasShadow" Value="False"/>
+            <Setter Property="HeightRequest" Value="50"/>
+        </Style>
+    </Application.Resources>
+</Application>

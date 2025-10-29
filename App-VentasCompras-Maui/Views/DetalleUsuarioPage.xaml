@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.DetalleUsuarioPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             x:DataType="vm:DetalleUsuarioViewModel"
+             BackgroundColor="#001111"
+             NavigationPage.HasNavigationBar="False">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="18">
+            
+            <!--  Encabezado con logo y título -->
+            <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                <Image Source="logo_app.png"
+                       WidthRequest="40"
+                       HeightRequest="40"
+                       VerticalOptions="Center"/>
+                <Label Text="Perfil del Usuario"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       TextColor="White"
+                       VerticalOptions="Center"/>
+            </HorizontalStackLayout>
+            
+            <!-- DATOS PERSONALES -->
+            <Label Text="Datos Personales" TextColor="Gray" FontSize="18" />
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Nombre}" Placeholder="Nombre" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Apellido}" Placeholder="Apellido" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Email}" Placeholder="Email" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Username}" Placeholder="Usuario" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.NroCelular}" Placeholder="Teléfono" IsReadOnly="True" />
+            </Frame>
+
+            <!-- UBICACIÓN -->
+            <Label Text="Dirección" TextColor="Gray" FontSize="18" />
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Pais}" Placeholder="País" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Provincia}" Placeholder="Provincia" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Localidad}" Placeholder="Localidad" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.CodigoPostal}" Placeholder="Código Postal" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.Calle}" Placeholder="Calle" IsReadOnly="True" />
+            </Frame>
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Text="{Binding Usuario.NroCalle}" Placeholder="Número de Calle" IsReadOnly="True" />
+            </Frame>
+            
+            <!-- STATUS -->
+            <Label Text="STATUS"
+                   FontAttributes="Bold"
+                   TextColor="#A0A0FF"
+                   FontSize="16" />
+            <HorizontalStackLayout>
+                <Label Text="Ventas exitosas" TextColor="White" />
+                <Label Text="{Binding Usuario.VentasExitosas}"  TextColor="White" FontAttributes="Bold" Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <!-- Opiniones -->
+            <Label Text="Cantidad opiniones"
+                   TextDecorations="Underline"
+                   TextColor="White"
+                   FontSize="16" />
+
+            <HorizontalStackLayout>
+                <Label Text="Bueno" TextColor="LimeGreen" FontAttributes="Bold" />
+                <Label Text="{Binding Usuario.Bueno}" TextColor="White" Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Malo" TextColor="Red" FontAttributes="Bold" />
+                <Label Text="{Binding Usuario.Malo}" TextColor="White" Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <HorizontalStackLayout>
+                <Label Text="Regular" TextColor="DodgerBlue" FontAttributes="Bold" />
+                <Label Text="{Binding Usuario.Regular}" TextColor="White" Margin="10,0,0,0"/>
+            </HorizontalStackLayout>
+
+            <!-- BOTONES -->
+            <HorizontalStackLayout HorizontalOptions="Center" Spacing="20" Margin="0,20" IsVisible="{Binding EsUsuarioActual}">
+                <Button Text="Eliminar"
+                        Command="{Binding EliminarCommand}"
+                        CommandParameter="{Binding Usuario.IDUsuario}"
+                        BackgroundColor="Red"
+                        TextColor="White"
+                        WidthRequest="130" />
+                <Button Text="Editar"
+                        Command="{Binding EditarUsuarioCommand}"
+                        BackgroundColor="#2B0B98"
+                        TextColor="White"
+                        WidthRequest="130" />
+            </HorizontalStackLayout>
+
+            <Button Text="Volver"
+                    Command="{Binding GoBackCommand}"
+                    BackgroundColor="Gray"
+                    TextColor="White"
+                    Margin="0,20,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.ProductosPorNombrePage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             xmlns:model="clr-namespace:App_VentasCompras_Maui.Models"
+             x:DataType="vm:ProductosPorNombreViewModel"
+             BackgroundColor="#001111"
+             Title="">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto" Padding="20" RowSpacing="15">
+
+        <!-- Encabezado -->
+        <HorizontalStackLayout Grid.Row="0" Spacing="10" HorizontalOptions="Center">
+            <Image Source="logo_app.png"
+                   WidthRequest="40"
+                   HeightRequest="40"
+                   VerticalOptions="Center" />
+            <Label Text="Busqueda por nombre"
+                   TextColor="White"
+                   FontSize="24"
+
+                   VerticalOptions="Center" />
+        </HorizontalStackLayout>
+
+        <!-- Entrada + botón -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,Auto,Auto" ColumnSpacing="10">
+            <Entry
+                Placeholder="Ingrese el nombre del producto"
+                Text="{Binding NombreProducto}"
+                PlaceholderColor="#AAAAAA"
+                TextColor="White"
+                BackgroundColor="#1E1E1E"
+                HeightRequest="50"
+                Grid.Column="0" />
+
+            <Button Text="Buscar"
+                    Grid.Column="2"
+                    Command="{Binding BuscarCommand}"
+                    BackgroundColor="#9C6EFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    WidthRequest="90" />
+        </Grid>
+
+        <!-- LISTA DE PRODUCTOS -->
+        <RefreshView Grid.Row="2" Grid.ColumnSpan="2"
+              Command="{Binding GetProductosCommand}"
+              IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding Productos}"
+                     SelectionMode="Single"
+                     SelectedItem="{Binding ProductoSeleccionado}"
+                     SelectionChangedCommand="{Binding GoToDetailCommand}">
+
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="100">
+                        <Image Source="loading.png"
+                               WidthRequest="100"
+                               HeightRequest="100"
+                               HorizontalOptions="Center"/>
+                        <Label Text="No se encontraron productos."
+                               TextColor="Gray"
+                               FontSize="18"
+                               HorizontalOptions="Center"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Producto">
+                        <Frame Padding="10" Margin="5" BorderColor="Silver" CornerRadius="15" HasShadow="True" InputTransparent="True">
+                            <Grid ColumnDefinitions="0.3*,0.7*" ColumnSpacing="15" InputTransparent="True">
+                                <Image Grid.Column="0"
+                                Source="{Binding Imagen}"
+                                WidthRequest="80"
+                                HeightRequest="80"
+                                Aspect="AspectFit"/>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding NombreProducto}"
+                                    FontSize="Medium"
+                                    TextColor="Black"/>
+                                    <Label Text="{Binding EstadoProducto}"
+                                    FontSize="Small"
+                                    TextColor="LightGray"/>
+                                    <Label Text="{Binding Precio, StringFormat='{0:C}'}"
+                                    FontSize="Small"
+                                    TextColor="LightGreen"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+</ContentPage>

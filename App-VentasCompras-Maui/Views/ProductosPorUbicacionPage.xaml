@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.ProductosPorUbicacionPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+             xmlns:model="clr-namespace:App_VentasCompras_Maui.Models"
+             x:DataType="vm:ProductosPorUbicacionViewModel"
+             BackgroundColor="#001111"
+             NavigationPage.HasNavigationBar="False"
+             Title="">
+
+    <Grid Padding="20" RowSpacing="15" RowDefinitions="Auto,Auto,Auto,*">
+
+        <!-- Encabezado -->
+        <HorizontalStackLayout Grid.Row="0" HorizontalOptions="Center" Spacing="10">
+            <Image Source="logo_app.png"
+                   WidthRequest="40"
+                   HeightRequest="40"
+                   VerticalOptions="Center"/>
+            <Label Text="Buscar por Ubicación"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   VerticalOptions="Center"/>
+        </HorizontalStackLayout>
+
+        <!-- Entradas de provincia y localidad -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,*,Auto" ColumnSpacing="10">
+            <Entry Grid.Column="0"
+                   Placeholder="Provincia"
+                   Text="{Binding Provincia}"
+                   PlaceholderColor="#AAAAAA"
+                   TextColor="White"
+                   BackgroundColor="#1E1E1E"
+                   HeightRequest="50"/>
+
+            <Entry Grid.Column="1"
+                   Placeholder="Localidad"
+                   Text="{Binding Localidad}"
+                   PlaceholderColor="#AAAAAA"
+                   TextColor="White"
+                   BackgroundColor="#1E1E1E"
+                   HeightRequest="50"/>
+
+            <Button Grid.Column="2"
+                    Text="Buscar"
+                    Command="{Binding BuscarCommand}"
+                    BackgroundColor="#9C6EFF"
+                    TextColor="White"
+                    CornerRadius="10"
+                    HeightRequest="50"
+                    WidthRequest="90"/>
+        </Grid>
+
+        <!-- Separador visual -->
+        <BoxView Grid.Row="2"
+                 HeightRequest="1"
+                 Color="#444"
+                 Margin="0,10"/>
+
+        <!-- Resultados -->
+        <RefreshView Grid.Row="3"
+                     Command="{Binding GetProductosCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding Productos}"
+                            SelectionMode="Single"
+                            SelectedItem="{Binding ProductoSeleccionado}"
+                            SelectionChangedCommand="{Binding GoToDetailCommand}"
+                            
+                            Margin="0,10,0,0">
+
+                <CollectionView.EmptyView>
+                    <StackLayout Padding="100">
+                        <Image Source="loading.png"
+                               WidthRequest="100"
+                               HeightRequest="100"
+                               HorizontalOptions="Center"/>
+                        <Label Text="No se encontraron productos."
+                               TextColor="Gray"
+                               FontSize="18"
+                               HorizontalOptions="Center"/>
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Producto">
+                        <Frame Padding="10"
+                               Margin="5"
+                               BorderColor="Silver"
+                               CornerRadius="15"
+                               HasShadow="True"
+                               InputTransparent="True"
+                               BackgroundColor="White">
+                            <Grid ColumnDefinitions="0.3*,0.7*" ColumnSpacing="15" InputTransparent="True">
+                                <Image Grid.Column="0"
+                                       Source="{Binding Imagen}"
+                                       WidthRequest="80"
+                                       HeightRequest="80"
+                                       Aspect="AspectFit"/>
+
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="{Binding NombreProducto}"
+                                           FontAttributes="Bold"
+                                           FontSize="Medium"
+                                           TextColor="Black"/>
+                                    <Label Text="{Binding EstadoProducto}"
+                                           FontSize="Small"
+                                           TextColor="Gray"/>
+                                    <Label Text="{Binding Precio, StringFormat='{0:C}'}"
+                                           FontSize="Small"
+                                           TextColor="Green"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
+
+    </Grid>
+</ContentPage>
