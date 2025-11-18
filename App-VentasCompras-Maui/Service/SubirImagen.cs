@@ -5,7 +5,7 @@ using System.Text.Json;
 namespace App_VentasCompras_Maui.Service
 {
    
-    public class SubirImagenService
+    public class SubirImagen
     {
         public async Task<string> GuardarImagenLocalAsync(FileResult resultado)
         {

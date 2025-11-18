@@ -111,9 +111,9 @@ namespace App_VentasCompras_Maui.Service
 
         public async Task BuscarProducto(int idProducto)
         {
-            var id = new { Id = idProducto };
-            var jsonContent = JsonConvert.SerializeObject(id);
-            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+            //var id = new { Id = idProducto };
+            //var jsonContent = JsonConvert.SerializeObject(id);
+            //var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             #region autenticacion
             var token = await SecureStorage.GetAsync("auth_token");

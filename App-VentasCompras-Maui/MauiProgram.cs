@@ -23,7 +23,7 @@ namespace App_VentasCompras_Maui
             builder.Services.AddSingleton<UsuarioService>();
             builder.Services.AddSingleton<CategoriaService>();
             builder.Services.AddSingleton<LoginService>();
-            builder.Services.AddSingleton<SubirImagenService>();
+            builder.Services.AddSingleton<SubirImagen>();
             builder.Services.AddSingleton<CategoriaService>();
 
             builder.Services.AddTransient<LoginViewModel>();
