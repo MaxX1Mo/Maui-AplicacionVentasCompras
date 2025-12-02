@@ -15,6 +15,7 @@
         public const string ListaProductoPorCategoria = "Producto/ListaPorCategoria";//string nombre categoria
         public const string ListaProductoPorNombre = "Producto/ListaPorNombre";//string nombre producto
         public const string ListaProductoPorUbicacion = "Producto/ListaPorUbicacion";// string provincia y localidad
+        public const string ListaProductoPorProvincia = "Producto/ListaPorProvincia";// string provincia 
 
         public const string BuscarProducto = "Producto/buscar";//id producto
         public const string CrearProducto = "Producto/crear";
