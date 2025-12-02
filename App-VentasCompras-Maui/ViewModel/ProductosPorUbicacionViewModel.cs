@@ -42,8 +42,15 @@ namespace App_VentasCompras_Maui.ViewModel
         {
             try
             {
-                var productos = await _productoService.ProductosPorUbicacion(Provincia, Localidad);
-
+                var productos = new List<Producto>();
+                if (!string.IsNullOrEmpty(Provincia))
+                {
+                    productos = await _productoService.ProductosPorProvincia(Provincia);
+                }
+                if (!string.IsNullOrEmpty(Localidad) && !string.IsNullOrEmpty(Provincia))
+                {
+                    productos = await _productoService.ProductosPorUbicacion(Provincia, Localidad);
+                }
                 if (productos != null)
                 {
                     Productos.Clear();
@@ -52,7 +59,6 @@ namespace App_VentasCompras_Maui.ViewModel
                     {
                         Productos.Add(producto);
                     }
-
                 }
             }
             catch (Exception ex)
