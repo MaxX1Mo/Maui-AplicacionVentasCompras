@@ -23,6 +23,9 @@ namespace App_VentasCompras_Maui.ViewModel
 
         [ObservableProperty]
         bool esPropietario;
+        
+        [ObservableProperty]
+        bool mostrarBotonContactar;
 
 // variable para saber si hubo contacto con el vendedor para asi habilitar la seccion opiniones
         [ObservableProperty]  
@@ -68,6 +71,7 @@ namespace App_VentasCompras_Maui.ViewModel
                 else
                     EsPropietario = false;
             }
+            MostrarBotonContactar = !EsPropietario;
         }
 
     [RelayCommand]
