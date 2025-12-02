@@ -111,9 +111,6 @@ namespace App_VentasCompras_Maui.Service
 
         public async Task BuscarProducto(int idProducto)
         {
-            //var id = new { Id = idProducto };
-            //var jsonContent = JsonConvert.SerializeObject(id);
-            //var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
             #region autenticacion
             var token = await SecureStorage.GetAsync("auth_token");
@@ -131,7 +128,7 @@ namespace App_VentasCompras_Maui.Service
         
         public async Task<List<Producto>> ProductosPorUsuario(int idUsuario)
         {
-            #region logica para autenticacion
+            #region autenticacion
             var token = await SecureStorage.GetAsync("auth_token");
             if (string.IsNullOrEmpty(token))
                 throw new Exception("No se encontró el token de autenticación.");
@@ -214,6 +211,28 @@ namespace App_VentasCompras_Maui.Service
 
 
             var response = await _httpClient.GetAsync($"{EndPoints.ListaProductoPorUbicacion}?provincia={Uri.EscapeDataString(provincia)}&localidad={Uri.EscapeDataString(localidad)}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var productos = JsonConvert.DeserializeObject<List<Producto>>(json);
+                return productos;
+            }
+            else
+            {
+                throw new Exception("Fallo en la solicitud de datos (o puedes que no estes autorizado)");
+            }
+        }
+        public async Task<List<Producto>> ProductosPorProvincia(string provincia)
+        {
+            #region autenticacion
+            var token = await SecureStorage.GetAsync("auth_token");
+            if (string.IsNullOrEmpty(token)) { throw new Exception("No se encontró el token de autenticación."); }
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            #endregion
+
+
+            var response = await _httpClient.GetAsync($"{EndPoints.ListaProductoPorProvincia}?provincia={Uri.EscapeDataString(provincia)}");
 
             if (response.IsSuccessStatusCode)
             {
