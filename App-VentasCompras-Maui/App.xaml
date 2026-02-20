@@ -31,7 +31,7 @@
             <Setter Property="CornerRadius" Value="10"/>
             <Setter Property="BackgroundColor" Value="#1E1E1E"/>
             <Setter Property="HasShadow" Value="False"/>
-            <Setter Property="HeightRequest" Value="50"/>
+            <Setter Property="HeightRequest" Value="62"/>
         </Style>
     </Application.Resources>
 </Application>
