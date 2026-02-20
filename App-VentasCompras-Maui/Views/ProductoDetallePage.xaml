@@ -163,7 +163,7 @@
             
             
             <!-- Acciones comunes -->
-            <Button Text="Contactar"
+            <Button Text="Contactar" IsVisible="{Binding MostrarBotonContactar}"
                     Command="{Binding GoContactarCommand}"
                     BackgroundColor="Blue"
                     TextColor="White"

@@ -2,7 +2,7 @@
 {
     public static class EndPoints
     {
-        public const string URLApi = "https://7p9w859f-5248.brs.devtunnels.ms/api/";
+        public const string URLApi = "https://kprt1hx8-5248.brs.devtunnels.ms/api/";
 
 
         // controller LOGIN \\
@@ -15,7 +15,7 @@
         public const string ListaProductoPorCategoria = "Producto/ListaPorCategoria";//string nombre categoria
         public const string ListaProductoPorNombre = "Producto/ListaPorNombre";//string nombre producto
         public const string ListaProductoPorUbicacion = "Producto/ListaPorUbicacion";// string provincia y localidad
-
+        public const string ListaProductoPorProvincia = "Producto/ListaPorProvincia";// string provincia 
         public const string BuscarProducto = "Producto/buscar";//id producto
         public const string CrearProducto = "Producto/crear";
         public const string EliminarProducto = "Producto/eliminar";//id producto

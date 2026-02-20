@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.AdministrarUsuariosPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+              xmlns:model="clr-namespace:App_VentasCompras_Maui.Models"
+                x:DataType="vm:AdministrarUsuariosViewModel"
+             Title="Administrar Usuarios">
+    <Grid Padding="15" RowDefinitions="Auto,*">
+
+        <!-- Botón Crear -->
+        <Button Grid.Row="0"
+                Text="➕ Crear Usuario"
+                Command="{Binding CrearUsuarioCommand}"
+                BackgroundColor="#9C6EFF"
+                TextColor="White"
+                CornerRadius="12"
+                HeightRequest="50"
+                Margin="0,0,0,10"/>
+
+        <RefreshView IsRefreshing="{Binding IsRefreshing}" Grid.Row="1"
+             Command="{Binding RefreshCommand}">
+            <!-- Lista -->
+        <CollectionView Grid.Row="2"
+                        ItemsSource="{Binding Usuarios}"
+                        SelectionMode="None">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Usuario">
+                    <Frame Padding="10"
+                           Margin="5"
+                           CornerRadius="15"
+                           BorderColor="Silver"
+                           BackgroundColor="White">
+
+                        <Grid ColumnDefinitions="*,Auto"
+                              RowDefinitions="Auto,Auto">
+
+                            <!-- Datos -->
+                            <StackLayout Grid.Column="0">
+                                <Label Text="{Binding Username}"
+                                       FontAttributes="Bold"
+                                       TextColor="SteelBlue"
+                                       FontSize="16"/>
+                                <Label Text="{Binding Email}"
+                                       FontSize="13"
+                                       TextColor="Gray"/>
+                                <Label Text="{Binding Rol}"
+                                       FontSize="13"
+                                       TextColor="DarkSlateGray"/>
+                            </StackLayout>
+
+                            <!-- Botones -->
+                            <HorizontalStackLayout Grid.Column="1"
+                                                   Spacing="10"
+                                                   VerticalOptions="Center">
+
+                                <Button Text="✏"
+                                        FontSize="18"
+                                        BackgroundColor="#FFD966"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdministrarUsuariosViewModel}},
+                                                  Path=EditarUsuarioCommand}"
+                                        CommandParameter="{Binding .}" />
+
+                                <Button Text="🗑"
+                                        FontSize="18"
+                                        BackgroundColor="#FF6B6B"
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AdministrarUsuariosViewModel}},
+                                                  Path=EliminarUsuarioCommand}"
+                                        CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+
+                        </Grid>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+        </RefreshView>
+    </Grid>
+</ContentPage>

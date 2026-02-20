@@ -43,6 +43,12 @@ namespace App_VentasCompras_Maui
             builder.Services.AddTransient<EditarProductoPage>();
             builder.Services.AddTransient<MenuPage>();
 
+            builder.Services.AddTransient<AdministrarUsuariosViewModel>();
+            builder.Services.AddTransient<AdministrarUsuariosPage>();
+
+            builder.Services.AddTransient<AdministrarCategoriasViewModel>();
+            builder.Services.AddTransient<AdministrarCategoriasPage>();
+
 
             builder.Services.AddTransient<ProductosListaViewModel>();
             builder.Services.AddTransient<CrearProductoViewModel>();

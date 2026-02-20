@@ -43,7 +43,7 @@ namespace App_VentasCompras_Maui.ViewModel
             
             if (!idUsuario.HasValue) return; 
 
-            // Verificar si el ID del usuario logueado es diferente al ID del usuario que se está mostrando
+                // Verificar si el ID del usuario logueado es diferente al ID del usuario que se está mostrando
             if (_usuarioIdParam.HasValue && _usuarioIdParam.Value != idUsuario.Value)
             {
             // Mostrando a otro usuario (vendedor, etc.)
@@ -96,6 +96,5 @@ namespace App_VentasCompras_Maui.ViewModel
                 await Application.Current.MainPage.Navigation.PushAsync(new EditarUsuarioPage(Usuario));
             }
         }
-
     }
 }

@@ -24,44 +24,89 @@
             <!-- DATOS PERSONALES -->
             <Label Text="Datos Personales" TextColor="Gray" FontSize="18" />
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Nombre}" Placeholder="Nombre" />
+                <VerticalStackLayout>
+                <Label Text="Nombre" TextColor="Gray" FontSize="12" />
+                <Entry Text="{Binding Usuario.Nombre}" Placeholder="Nombre del Usuario" />
+                </VerticalStackLayout>
             </Frame>
 
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Apellido}" Placeholder="Apellido" />
+                <VerticalStackLayout>
+                    <Label Text="Apellido" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Apellido}" Placeholder="Apellido del Usuario" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Email}" Placeholder="Email" Keyboard="Email" />
+                <VerticalStackLayout>
+                    <Label Text="Email" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Email}" Placeholder="cuenta_usuario@gmail.com" Keyboard="Email" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding NuevaPassword}" Placeholder="Contraseña" />
+                <VerticalStackLayout>
+                    <Label Text="Contraseña" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding NuevaPassword}" Placeholder="****" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Username}" Placeholder="Usuario" />
+                <VerticalStackLayout>
+                    <Label Text="Usuario" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Username}" Placeholder="Nombre de Usuario" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.NroCelular}" Placeholder="Teléfono" Keyboard="Telephone" />
+                <VerticalStackLayout>
+                    <Label Text="Teléfono" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.NroCelular}" Placeholder="Ej: +2954556645" Keyboard="Telephone" />
+                </VerticalStackLayout>
             </Frame>
 
             <!-- UBICACIÓN -->
             <Label Text="Dirección" TextColor="Gray" FontSize="18" />
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Pais}" Placeholder="País" />
+                <VerticalStackLayout>
+                    <Label Text="País" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Pais}" Placeholder="Ej: Argentina" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Provincia}" Placeholder="Provincia" />
+                <VerticalStackLayout>
+                    <Label Text="Provincia" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Provincia}" Placeholder="Ej: La Pampa" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Localidad}" Placeholder="Localidad" />
+                <VerticalStackLayout>
+                    <Label Text="Localidad" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Localidad}" Placeholder="Ej: Santa Rosa" />
+                </VerticalStackLayout>
             </Frame>
+            
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.CodigoPostal}" Placeholder="Código Postal" Keyboard="Numeric" />
+                <VerticalStackLayout>
+                    <Label Text="Código Postal" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.CodigoPostal}" Placeholder="Ej: 6300" Keyboard="Numeric" />
+                </VerticalStackLayout>
             </Frame>
+                
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.Calle}" Placeholder="Calle" />
+                <VerticalStackLayout>
+                    <Label Text="Calle" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.Calle}" Placeholder="Ej: Alfredo Bravo" />
+                    </VerticalStackLayout>
             </Frame>
+                
             <Frame Style="{StaticResource EntryFrame}">
-                <Entry Text="{Binding Usuario.NroCalle}" Placeholder="Número de Calle" Keyboard="Numeric" />
+                <VerticalStackLayout>
+                    <Label Text="Número de Calle" TextColor="Gray" FontSize="12" />
+                    <Entry Text="{Binding Usuario.NroCalle}" Placeholder="Ej: 1050" Keyboard="Numeric" />
+                </VerticalStackLayout>
             </Frame>
 
             <!-- BOTONES -->

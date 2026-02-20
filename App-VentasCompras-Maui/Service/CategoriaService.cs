@@ -77,7 +77,7 @@ namespace App_VentasCompras_Maui.Service
             }
         }
 
-        public async Task CrearCategoria(Categoria categoria)
+        public async Task CrearCategoria(CategoriaDTO categoria)
         {
             var jsonContent = JsonConvert.SerializeObject(categoria);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -92,6 +92,8 @@ namespace App_VentasCompras_Maui.Service
 
             if (!response.IsSuccessStatusCode)
             {
+                var error = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine($"[ERROR] {response.StatusCode} - {error}");
                 throw new Exception("Error en la creacion de la categoria");
             }
         }

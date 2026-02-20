@@ -124,7 +124,7 @@ namespace App_VentasCompras_Maui.ViewModel
             if (resultado != null) 
             {
                 var servicioImagen = new SubirImagen();
-                string urlImagen = await servicioImagen.GuardarImagenLocalAsync(resultado); 
+                string urlImagen = await servicioImagen.SubirImagenCloudinaryAsync(resultado); 
 
                 if (!string.IsNullOrEmpty(urlImagen))
                 {

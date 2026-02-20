@@ -102,7 +102,7 @@ namespace App_VentasCompras_Maui.Service
 
         }
 
-        public async Task CrearUsuario(Usuario usuario)
+        public async Task CrearUsuario(UsuarioCrearDTO usuario)
         {
             var jsonContent = JsonConvert.SerializeObject(usuario);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -117,6 +117,9 @@ namespace App_VentasCompras_Maui.Service
 
             if (!response.IsSuccessStatusCode)
             {
+                var error = await response.Content.ReadAsStringAsync();
+                System.Diagnostics.Debug.WriteLine($"[ERROR] {response.StatusCode} - {error} y el json {content}");
+                
                 throw new Exception("Error en la creacion del usuario");
             }
         }

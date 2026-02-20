@@ -226,5 +226,27 @@ namespace App_VentasCompras_Maui.Service
                 throw new Exception("Fallo en la solicitud de datos (o puedes que no estes autorizado)");
             }
         }
+        public async Task<List<Producto>> ProductosPorProvincia(string provincia)
+        {
+            #region autenticacion
+            var token = await SecureStorage.GetAsync("auth_token");
+            if (string.IsNullOrEmpty(token)) { throw new Exception("No se encontró el token de autenticación."); }
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
+            #endregion
+
+
+            var response = await _httpClient.GetAsync($"{EndPoints.ListaProductoPorProvincia}?provincia={Uri.EscapeDataString(provincia)}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var json = await response.Content.ReadAsStringAsync();
+                var productos = JsonConvert.DeserializeObject<List<Producto>>(json);
+                return productos;
+            }
+            else
+            {
+                throw new Exception("Fallo en la solicitud de datos (o puedes que no estes autorizado)");
+            }
+        }
     }
 }

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="App_VentasCompras_Maui.Views.CrearUsuarioPage"
+             xmlns:vm="clr-namespace:App_VentasCompras_Maui.ViewModel"
+            x:DataType="vm:CrearUsuarioViewModel"
+             NavigationPage.HasNavigationBar="False"
+             Title="Crear Usuario">
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="18" VerticalOptions="CenterAndExpand">
+
+            <Label Text="Crear Cuenta"
+                   FontSize="24"
+                   TextColor="LightBlue"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <!-- Email -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Email" Text="{Binding Usuario.Email}" Keyboard="Email" />
+            </Frame>
+
+            <!-- Username -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Nombre de Usuario" Text="{Binding Usuario.Username}" />
+            </Frame>
+
+            <!-- Contraseña -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Contraseña" Text="{Binding Usuario.Password}" IsPassword="True" />
+            </Frame>
+
+            <!-- Nombre -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Nombre" Text="{Binding Usuario.Nombre}" />
+            </Frame>
+
+            <!-- Apellido -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Apellido" Text="{Binding Usuario.Apellido}" />
+            </Frame>
+
+            <!-- Celular -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Nro Celular" Text="{Binding Usuario.NroCelular}" Keyboard="Telephone" />
+            </Frame>
+
+            <!-- País -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="País" Text="{Binding Usuario.Pais}" />
+            </Frame>
+
+            <!-- Provincia -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Provincia" Text="{Binding Usuario.Provincia}" />
+            </Frame>
+
+            <!-- Localidad -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Localidad" Text="{Binding Usuario.Localidad}" />
+            </Frame>
+
+            <!-- Código Postal -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Código Postal (opcional)" Text="{Binding Usuario.CodigoPostal}" Keyboard="Numeric" />
+            </Frame>
+
+            <!-- Calle -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Calle (opcional)" Text="{Binding Usuario.Calle}" />
+            </Frame>
+
+            <!-- Número de Calle -->
+            <Frame Style="{StaticResource EntryFrame}">
+                <Entry Placeholder="Número de Calle (opcional)" Text="{Binding Usuario.NroCalle}" Keyboard="Numeric" />
+            </Frame>
+
+            <!-- Rol-->
+            <Label Text="Rol" TextColor="White"/>
+            <Picker Title="Seleccione Rol"
+                ItemsSource="{Binding RolOpciones}"
+                SelectedItem="{Binding RolSeleccionado}"
+                TextColor="White"
+                BackgroundColor="#1E1E1E"
+                HeightRequest="50" />
+
+            <!-- Botón -->
+            <Button Text="Crear"
+                    Command="{Binding CrearCommand}"
+                    TextColor="White"
+                    BackgroundColor="#9C6EFF"
+                    CornerRadius="25"
+                    HeightRequest="50"
+                    FontAttributes="Bold"
+                    FontSize="18"
+                    Margin="0,20,0,0" />
+
+            <!-- Volver -->
+            <Button Text="Volver"
+                    Command="{Binding VolverCommand}"
+                    TextColor="White"
+                    BackgroundColor="Gray"
+                    CornerRadius="25"
+                    HeightRequest="45"
+                    FontSize="16"
+                    Margin="0,10,0,0" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
